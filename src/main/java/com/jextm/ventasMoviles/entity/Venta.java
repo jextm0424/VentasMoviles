@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Venta implements Serializable{
 	
 	/**
-	 * 
+	 * gg
 	 */
 	private static final long serialVersionUID = 1L;
 
