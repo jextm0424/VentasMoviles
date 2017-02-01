@@ -13,5 +13,7 @@ public interface MaterialRepository extends JpaRepository<Material, Integer>{
 	
 	@Query("select u from Material u where u.estado = ?1")
 	List<Material> getByEstado(Character estado);
+	@Query("select u from Material u where u.material like ?1")
+	List<Material> getByName(String material);
 
 }

@@ -33,5 +33,9 @@ public class MaterialService {
 	{
 		return materialRepository.findOne(idMaterial);
 	}
+	@Transactional(readOnly=true)
+	public List<Material> getByName(String material){
+		return materialRepository.getByName("%"+material+"%");
+	}
 
 }

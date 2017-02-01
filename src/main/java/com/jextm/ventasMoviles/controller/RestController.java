@@ -53,6 +53,7 @@ public class RestController {
 	@ResponseBody
 	public String getClientes(String usuario, String clave){
 		int dia = getDay();
+		usuario = usuario.toLowerCase();
 		Map json = new HashMap();
 		Personal personal = personalService.login(usuario, clave);
 		if(personal!=null){

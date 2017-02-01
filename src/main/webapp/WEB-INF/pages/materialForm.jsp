@@ -12,15 +12,15 @@
 	<form:form action="" method="POST" modelAttribute="matModel">
 		<div class="form-group">
 			<label for="material">Nombre: </label>
-			<form:input path="material"  required="required" cssClass="form-control"/>
+			<form:input path="material"  required="required" cssClass="form-control" maxlength="70"/>
 		</div>
 		<div class="form-group">
 			<label for="precio">Precio: </label>
-			<form:input path="precio" required="required" type="number" cssClass="form-control"/>
+			<form:input path="precio" required="required" type="number" cssClass="form-control" step="0.01"/>
 		</div>
 		<div class="form-group">
 			<label for="peso">Peso: </label>
-			<form:input path="peso" type="number" required="required" cssClass="form-control"/>
+			<form:input path="peso" type="number" required="required" cssClass="form-control" step="0.01"/>
 		</div>
 		<form:button class="btn btn-success">Enviar</form:button>
 	</form:form>
