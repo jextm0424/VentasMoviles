@@ -22,7 +22,7 @@
 			<c:forEach items="${ventas }" var="venta">
 				<tr>
 					<td>${venta.fechaVenta }</td>
-					<td>${venta.cliente.nombreLargo }</td>
+					<td>${venta.cliente.apellido }, ${venta.cliente.nombre }</td>
 					<td>${venta.precioTotal }</td>
 					<td>${venta.pesoTotal }</td>
 					<td><button onclick="borrarventa(${venta.idVenta},this)">Eliminar</button> <a href="<c:url value="/modificarVenta?idVenta=${venta.idVenta}"/>">Modificar</a></td>

@@ -60,10 +60,6 @@
 		<div class="form-group">
 			<label for="ubigeo">Ubigeo</label>
 			<form:input path="ubigeo" cssClass="form-control" value="${cliModel.ubigeo}"/>
-		</div>	
-		<div class="form-group">
-			<label for="nombreLargo">Nombre Largo</label>
-			<form:input path="nombreLargo" cssClass="form-control" value="${cliModel.nombreLargo}"/>
 		</div>		
 		<div class="form-group">
 			<label for="estado">Estado</label>

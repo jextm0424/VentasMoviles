@@ -4,7 +4,6 @@ public class ClientesModel {
 	private int idCliente;
 	private String nombre;
 	private String apellido;
-	private String nombreLargo;
 	private String direccion;
 	private String nroDocumento;
 	private String tipoDocumento;
@@ -31,12 +30,6 @@ public class ClientesModel {
 	}
 	public void setApellido(String apelido) {
 		this.apellido = apelido;
-	}
-	public String getNombreLargo() {
-		return nombreLargo;
-	}
-	public void setNombreLargo(String nombreLargo) {
-		this.nombreLargo = nombreLargo;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -92,14 +85,13 @@ public class ClientesModel {
 	public void setDiaVisita(String diaVisita) {
 		this.diaVisita = diaVisita;
 	}
-	public ClientesModel(int idCliente, String nombre, String apellido, String nombreLargo, String direccion,
+	public ClientesModel(int idCliente, String nombre, String apellido, String direccion,
 			String nroDocumento, String tipoDocumento, String giro, String modulo, String ubigeo, String x, String y,
 			String diaVisita) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.nombreLargo = nombreLargo;
 		this.direccion = direccion;
 		this.nroDocumento = nroDocumento;
 		this.tipoDocumento = tipoDocumento;

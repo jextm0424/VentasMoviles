@@ -46,8 +46,6 @@ public class Cliente {
 	private String ubigeo;
 	@Column( name = "modulo")
 	private String modulo;
-	@Column(name="nombreLargo")
-	private String nombreLargo;
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -132,15 +130,9 @@ public class Cliente {
 	public void setModulo(String modulo) {
 		this.modulo = modulo;
 	}
-	public String getNombreLargo() {
-		return nombreLargo;
-	}
-	public void setNombreLargo(String nombreLargo) {
-		this.nombreLargo = nombreLargo;
-	}
 	public Cliente(int idCliente, String direccion, int nroDocumento, Character estado, BigDecimal x, BigDecimal y,
 			Personal personal, Giro giro, TipoDocumento tipoDocumento, int diaVisita, String nombre, String apellido,
-			String ubigeo, String modulo, String nombreLargo) {
+			String ubigeo, String modulo) {
 		super();
 		this.idCliente = idCliente;
 		this.direccion = direccion;
@@ -156,11 +148,10 @@ public class Cliente {
 		this.apellido = apellido;
 		this.ubigeo = ubigeo;
 		this.modulo = modulo;
-		this.nombreLargo = nombreLargo;
 	}
 	public Cliente(String direccion, int nroDocumento, Character estado, BigDecimal x, BigDecimal y,
 			Personal personal, Giro giro, TipoDocumento tipoDocumento, int diaVisita, String nombre, String apellido,
-			String ubigeo, String modulo, String nombreLargo) {
+			String ubigeo, String modulo) {
 		super();
 		this.direccion = direccion;
 		this.nroDocumento = nroDocumento;
@@ -175,7 +166,6 @@ public class Cliente {
 		this.apellido = apellido;
 		this.ubigeo = ubigeo;
 		this.modulo = modulo;
-		this.nombreLargo = nombreLargo;
 	}
 	public Cliente() {
 		// TODO Auto-generated constructor stub

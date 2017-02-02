@@ -33,7 +33,7 @@ public class HomeController {
 	@RequestMapping(value= "login", method = RequestMethod.POST)
 	public ModelAndView postLogin(@Valid @ModelAttribute("lgModel") Personal personal, HttpServletRequest request){
 		ModelAndView model = new ModelAndView("exclude/login");
-		Personal usuario = personalService.login(personal.getUsuario(), personal.getClave());
+		Personal usuario = personalService.login(personal.getUsuario().toUpperCase(), personal.getClave());
 		if (usuario != null) {
 			if (usuario.getRol().getIdRol().equals('A')) {
 				model.setViewName("redirect:/");

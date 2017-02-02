@@ -39,7 +39,6 @@
 						<td>Apellido</td>
 						<td>Tipo Documento</td>
 						<td>Número De Documento</td>
-						<td>Nombre Largo</td>
 						<td>Opciones</td>
 					</tr>
 				</thead>
@@ -50,7 +49,6 @@
 							<td>${cliente.apellido}</td>
 							<td>${cliente.tipoDocumento.tipoDocumento}</td>
 							<td>${cliente.nroDocumento}</td>
-							<td>${cliente.nombreLargo}</td>
 							<td><button onclick="editar(${cliente.idCliente})" class="btn btn-info">Editar</button> </td>
 						</tr>
 					</c:forEach>

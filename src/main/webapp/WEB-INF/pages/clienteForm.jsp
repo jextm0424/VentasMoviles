@@ -61,10 +61,6 @@
 			<form:input path="ubigeo" cssClass="form-control"/>
 		</div>	
 		<div class="form-group">
-			<label for="nombreLargo">Nombre Largo</label>
-			<form:input path="nombreLargo" cssClass="form-control"/>
-		</div>		
-		<div class="form-group">
 			<form:button class="btn btn-success">Enviar</form:button>
 		</div>
 		</form:form>

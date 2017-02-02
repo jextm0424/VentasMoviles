@@ -30,6 +30,7 @@ import com.jextm.ventasMoviles.service.GiroService;
 import com.jextm.ventasMoviles.service.MaterialService;
 import com.jextm.ventasMoviles.service.PersonalService;
 import com.jextm.ventasMoviles.service.TipoDocumentoService;
+import com.jextm.ventasMoviles.service.UbigeoService;
 import com.jextm.ventasMoviles.service.VentaService;
 import com.jextm.ventasMoviles.util.Constans;
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -49,11 +50,13 @@ public class RestController {
 	private TipoDocumentoService tipoDocumentoservice;
 	@Autowired
 	private GiroService giroService;
+	@Autowired
+	private UbigeoService ubigeoService;
 	@RequestMapping(value = "/restLogin", method =RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
 	public String getClientes(String usuario, String clave){
 		int dia = getDay();
-		usuario = usuario.toLowerCase();
+		usuario = usuario.toUpperCase();
 		Map json = new HashMap();
 		Personal personal = personalService.login(usuario, clave);
 		if(personal!=null){
@@ -67,7 +70,6 @@ public class RestController {
 				model.setGiro(cliente.getGiro().getGiro());
 				model.setModulo(cliente.getModulo());
 				model.setNombre(cliente.getNombre());
-				model.setNombreLargo(cliente.getNombreLargo());
 				model.setNroDocumento(cliente.getNroDocumento()+"");
 				model.setTipoDocumento(cliente.getTipoDocumento().getTipoDocumento());
 				model.setUbigeo(cliente.getUbigeo());
@@ -82,6 +84,7 @@ public class RestController {
 			json.put("personal", personal);
 			json.put("giros", giroService.getAll());
 			json.put("tipoDocumentos", tipoDocumentoservice.getAll());
+			json.put("ubigeos", ubigeoService.getAll());
 		}else{
 			badResponse(json);
 		}
@@ -139,7 +142,7 @@ public class RestController {
 	public String saveCliente(String idPersonal,String diaVisita,
 			String direccion,String nroDocumento,String x, String y,
 			String giro,String tipoDocumento, String apellido, String nombre,String modulo,
-			String ubigeo, String nombreLargo){
+			String ubigeo){
 		Cliente cliente=null;
 		Personal personal = null;
 		TipoDocumento tipoDoc = null;
@@ -149,7 +152,7 @@ public class RestController {
 			tipoDoc = tipoDocumentoservice.findOne(tipoDocumento.charAt(0));
 			personal = personalService.findOne(Integer.parseInt(idPersonal));
 			ngiro = giroService.findOne(giro.charAt(0));
-			cliente = new Cliente(direccion, Integer.parseInt(nroDocumento), 'A', new BigDecimal(x), new BigDecimal(y), personal, ngiro, tipoDoc, Integer.parseInt(diaVisita), nombre, apellido, ubigeo, modulo, nombreLargo);
+			cliente = new Cliente(direccion, Integer.parseInt(nroDocumento), 'A', new BigDecimal(x), new BigDecimal(y), personal, ngiro, tipoDoc, Integer.parseInt(diaVisita), nombre, apellido, ubigeo, modulo);
 			clienteService.saveCliente(cliente);
 			goodResponse(json);
 		}catch(NumberFormatException|NullPointerException e){
