@@ -154,6 +154,7 @@ public class RestController {
 			ngiro = giroService.findOne(giro.charAt(0));
 			cliente = new Cliente(direccion, Integer.parseInt(nroDocumento), 'A', new BigDecimal(x), new BigDecimal(y), personal, ngiro, tipoDoc, Integer.parseInt(diaVisita), nombre, apellido, ubigeo, modulo);
 			clienteService.saveCliente(cliente);
+			json.put("cliente", cliente);
 			goodResponse(json);
 		}catch(NumberFormatException|NullPointerException e){
 			System.out.println("Error : "+ e.getMessage());
