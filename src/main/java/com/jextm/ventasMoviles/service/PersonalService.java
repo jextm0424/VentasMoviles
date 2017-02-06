@@ -36,6 +36,10 @@ public class PersonalService {
 	}
 	@Transactional(readOnly=true)
 	public List<Personal> findByName(String name){
-		return personalRepository.findByName(name);
+		return personalRepository.findByName("%"+name+"%");
+	}
+	@Transactional(readOnly=true)
+	public Personal findByUsuario(String usuario){
+		return personalRepository.findByUsuario(usuario);
 	}
 }

@@ -14,10 +14,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 	@Query("select u from Cliente u where u.nroDocumento = ?1")
 	Cliente findByNroDoc(int nroDocumento);
 	
-	@Query("select u from Cliente u where u.nombre = ?1")
+	@Query("select u from Cliente u where u.nombre like ?1")
 	List<Cliente> findByName(String nombre);
 	
-	@Query("select u from Cliente u where u.apellido = ?1")
+	@Query("select u from Cliente u where u.apellido like ?1")
 	List<Cliente> findByLastName(String apellido);
 	
 	@Query("select u from Cliente u where u.estado = ?1")

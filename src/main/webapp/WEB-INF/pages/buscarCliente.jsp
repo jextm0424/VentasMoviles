@@ -20,6 +20,7 @@
 				<option value="2">Nombre</option>
 				<option value="3">Apellido</option>
 				<option value="4">Dia De Visita</option>
+				<option value="5">Todo</option>
 			</select>
 		</div>
 		<div class="col-md-3">

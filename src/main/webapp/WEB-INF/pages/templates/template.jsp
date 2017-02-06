@@ -8,6 +8,7 @@
 <script src='<c:url value="dwr/engine.js"/>'></script>
 <script src='<c:url value="dwr/interface/ajax.js"/>'></script>
 <script src='<c:url value="dwr/util.js"/>'></script>
+<script src='<c:url value="/resources/js/jquery-2.2.3.min.js"/>'></script>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/bootstrap-theme.min.css" />" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/default/default.css"/>"  rel="stylesheet" type="text/css" />
@@ -141,7 +142,7 @@
         </div>
     </div>
     
-    <script src='<c:url value="/resources/js/jquery-2.2.3.min.js"/>'></script>
+    
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src='<c:url value="/resources/js/bootstrap.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/dataTables.bootstrap.min.js"/>'></script>

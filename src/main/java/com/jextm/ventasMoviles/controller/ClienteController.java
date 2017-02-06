@@ -103,7 +103,7 @@ public class ClienteController {
 				lista = null;
 				break;
 			default:
-				lista = null;
+				lista = clienteSerivice.getClientes();
 				break;
 			}
 			if (lista!=null) {

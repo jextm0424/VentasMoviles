@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jextm.ventasMoviles.entity.Personal;
 import com.jextm.ventasMoviles.service.PersonalService;
 import com.jextm.ventasMoviles.service.RolService;
+import com.jextm.ventasMoviles.service.TerritorioService;
 import com.jextm.ventasMoviles.service.TipoService;
 
 @Controller
@@ -28,6 +29,8 @@ public class PersonalController {
 	private TipoService tipoService;
 	@Autowired
 	private RolService rolService;
+	@Autowired
+	private TerritorioService territorioService;
 	
 	
 	@RequestMapping(value="/personal")
@@ -35,45 +38,73 @@ public class PersonalController {
 		return "personalIndex";
 	}
 	@RequestMapping(value="/addPersonal", method = RequestMethod.POST)
-	public ModelAndView addPersonal(@Valid @ModelAttribute("peModel") Personal personal, BindingResult br){
-		ModelAndView model = new ModelAndView("indexPersonal");
-		if (personal.getIdPersonal() == 0) {
-			personal.setEstado('A');
-		}
-		if (br.hasErrors()) {
+	public ModelAndView addPersonal(@Valid @ModelAttribute("peModel") Personal personal){
+		ModelAndView model = new ModelAndView("personalIndex");
+		Personal exisUsuario = personalService.findByUsuario(personal.getUsuario().toUpperCase());
+		
+		if (exisUsuario!=null && personal.getIdPersonal()==0) {
+			model.addObject("message", "El usuario Ya Existe");
 			model.addObject("roles", rolService.getAll());
 			model.addObject("tipos", tipoService.getAll());
-			model.addObject("message", "Debe Agregar todos los campos correctamente");
-			model.setViewName("addPersonal");
+			model.addObject("territorios", territorioService.getAll());	
+			if(personal.getIdPersonal() == 0){
+				model.setViewName("addPersonal");
+			}else{
+				model.setViewName("modifyPersonal");
+			}
 			return model;
 		}
-		try {
-			personalService.savePersonal(personal);
-		} catch (HibernateException e) {
-			model.addObject("message", "No se Pudo Agregar o Modificar Personal");
-			model.addObject("roles", rolService.getAll());
-			model.addObject("tipos", tipoService.getAll());
-			model.setViewName("addPersonal");
-			return model;
-		}
+			if (personal.getIdPersonal() == 0) {
+				personal.setEstado('A');
+			}
+			if ((personal.getTerritorio().getIdTerritorio()==0 || personal.getTipo().getIdTipo().equals(""))&& personal.getRol().getIdRol() == 'V') {
+				model.addObject("message", "Terrotorio y Tipo son obligatorios para el Rol Vendedor");
+				model.addObject("roles", rolService.getAll());
+				model.addObject("tipos", tipoService.getAll());
+				model.addObject("territorios", territorioService.getAll());		
+				if(personal.getIdPersonal() == 0){
+					model.setViewName("addPersonal");
+				}else{
+					model.setViewName("modifyPersonal");
+				}
+				return model;
+			}
+			if (personal.getRol().getIdRol()=='A') {
+				personal.setTerritorio(null);
+				personal.setTipo(null);
+			}
+			try {
+				personal.setUsuario(personal.getUsuario().toUpperCase());
+				personalService.savePersonal(personal);
+			} catch (HibernateException e) {
+				model.addObject("message", "No se Pudo Agregar o Modificar Personal");
+				model.addObject("roles", rolService.getAll());
+				model.addObject("tipos", tipoService.getAll());
+				model.addObject("territorios", territorioService.getAll());
+				model.setViewName("addPersonal");
+				return model;
+			}
+		
 		model.addObject("message", "Se realizo Correctamente");
 		return model;
 	}
 	
-	@RequestMapping(value="/addPersonal",method= RequestMethod.POST)
+	@RequestMapping(value="/addPersonal",method= RequestMethod.GET)
 	public ModelAndView addPersonalForm(){
 		ModelAndView model = new ModelAndView("addPersonal");
 		model.addObject("roles", rolService.getAll());
 		model.addObject("tipos", tipoService.getAll());
 		model.addObject("peModel", new Personal());
+		model.addObject("territorios", territorioService.getAll());
 		return model;
 	}
 	@RequestMapping(value="/modifyPersonal",method= RequestMethod.GET)
 	public ModelAndView modidyPersonal(int idPersonal){
 		Personal personal = personalService.findOne(idPersonal);
-		ModelAndView model = new ModelAndView("addPersonal");
+		ModelAndView model = new ModelAndView("modifyPersonal");
 		model.addObject("roles", rolService.getAll());
 		model.addObject("tipos", tipoService.getAll());
+		model.addObject("territorios", territorioService.getAll());
 		model.addObject("peModel", personal);
 		return model;
 	}

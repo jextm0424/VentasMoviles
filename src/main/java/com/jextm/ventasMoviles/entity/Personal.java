@@ -40,11 +40,11 @@ public class Personal {
 	private Rol rol;
 	
 	@ManyToOne
-	@JoinColumn(name="fk_idTerritorio")
+	@JoinColumn(name="fk_idTerritorio", nullable=true)
 	private Territorio territorio;
 
 	@ManyToOne
-	 @JoinColumn(name="fk_Tipo")
+	@JoinColumn(name="fk_tipo", nullable=true)
 	private Tipo tipo;
 
 	public int getIdPersonal() {

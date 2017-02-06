@@ -10,13 +10,13 @@ import javax.persistence.Table;
 public class Tipo {
 	
 	@Id
-	private char idTipo;
+	private Character idTipo;
 	@Column(name="descripcion")
 	private String descripcion;
-	public char getIdTipo() {
+	public Character getIdTipo() {
 		return idTipo;
 	}
-	public void setIdTipo(char idTipo) {
+	public void setIdTipo(Character idTipo) {
 		this.idTipo = idTipo;
 	}
 	public String getDescripcion() {
@@ -25,7 +25,7 @@ public class Tipo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public Tipo(char idTipo, String descripcion) {
+	public Tipo(Character idTipo, String descripcion) {
 		super();
 		this.idTipo = idTipo;
 		this.descripcion = descripcion;

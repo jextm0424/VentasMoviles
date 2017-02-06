@@ -13,6 +13,8 @@ public interface PersonalRepository extends JpaRepository<Personal, Integer>{
 
 	@Query("select u from Personal u where u.usuario=?1 and u.clave = ?2")
 	Personal login(String user, String clave);
-	@Query("select u from Personal u where u.nombre=?1")
+	@Query("select u from Personal u where u.nombre like ?1")
 	List<Personal> findByName(String name);
+	@Query("select u from Personal u where u.usuario like ?1")
+	Personal findByUsuario(String usuario);
 }
