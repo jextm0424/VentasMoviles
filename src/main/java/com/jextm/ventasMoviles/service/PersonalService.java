@@ -34,4 +34,8 @@ public class PersonalService {
 	public Personal findOne(int codigo){
 		return personalRepository.findOne(codigo);
 	}
+	@Transactional(readOnly=true)
+	public List<Personal> findByName(String name){
+		return personalRepository.findByName(name);
+	}
 }

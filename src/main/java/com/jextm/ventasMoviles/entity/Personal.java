@@ -43,6 +43,10 @@ public class Personal {
 	@JoinColumn(name="fk_idTerritorio")
 	private Territorio territorio;
 
+	@ManyToOne
+	 @JoinColumn(name="fk_Tipo")
+	private Tipo tipo;
+
 	public int getIdPersonal() {
 		return idPersonal;
 	}
@@ -115,37 +119,16 @@ public class Personal {
 		this.territorio = territorio;
 	}
 
-	public Personal(int idPersonal, String usuario, String clave,
-			String nombre, String apellido, int dni, Character estado, Rol rol,
-			Territorio territorio) {
-		super();
-		this.idPersonal = idPersonal;
-		this.usuario = usuario;
-		this.clave = clave;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.estado = estado;
-		this.rol = rol;
-		this.territorio = territorio;
-	}
-	
-	public Personal(String usuario, String clave,
-			String nombre, String apellido, int dni, Character estado, Rol rol,
-			Territorio territorio) {
-		super();
-		this.usuario = usuario;
-		this.clave = clave;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.estado = estado;
-		this.rol = rol;
-		this.territorio = territorio;
+	public Tipo getTipo() {
+		return tipo;
 	}
 
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+	
+	
 	public Personal() {
 		// TODO Auto-generated constructor stub
 	}
-
 }
