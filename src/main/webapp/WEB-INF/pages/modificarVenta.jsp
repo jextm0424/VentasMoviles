@@ -9,15 +9,58 @@
 <title>Modificar Venta</title>
 </head>
 <body>
+
 	<c:forEach items="${detVenta}" var="venta" varStatus="myIndex">
 		<c:if test="${myIndex.index == 0 }">
-			<input type="hidden" value="${venta.pk.venta.idVenta}"/>
-			<input type="date" id="fechaVenta" value="${venta.pk.venta.fechaVenta }">
+		<div class="row">
+		<div class="col-md-3"></div>
+			<div class="col-md-3">
+				<label for="fechaVenta">Fecha de Venta</label>
+				<input type="hidden" value="${venta.pk.venta.idVenta}"/>
+			</div>
+			<div class="col-md-6">
+				<input type="datetime" id="fechaVenta" value="${venta.pk.venta.fechaVenta }" class="form-control">
+			</div>
+		</div>
+		<br><br><br>
+		<div class="row">
+			<div class="col-md-3">
+				<p style="text-align: center;"><b>MATERIAL</b></p>
+			</div>
+			<div class="col-md-3">
+				<p style="text-align: center;"><b>PRECIO</b></p>
+			</div>
+			<div class="col-md-3">
+				<p style="text-align: center;"><b>PESO</b></p>
+			</div>
+			<div class="col-md-3">
+				<p style="text-align: center;"><b>CANTIDAD</b></p>
+			</div>			
+		</div>
 		</c:if>
-		<p>Material: ${venta.pk.material.material }</p>
-		<p>Precio: ${venta.pk.material.precio }</p>
-		<p>Peso: ${venta.pk.material.peso }</p>
-		<p>Cantidad: ${venta.cantidad }</p>
+		<div class="row">
+			<input type="hidden" name="codMaterial" id="${venta.pk.material.idMaterial}">
+			<div class="col-md-3">
+				<p style="text-align: center;">${venta.pk.material.material }</p>
+			</div>
+			<div class="col-md-3">
+				<input type="number" class="form-control" value="${venta.pk.material.precio }" step="0.01">
+			</div>
+			<div class="col-md-3">
+				<input type="number" class="form-control" value="${venta.pk.material.peso }" step="0.01">
+			</div>
+			<div class="col-md-3">
+				<input type="number" class="form-control" value="${venta.cantidad }" step="1">
+			</div>
+		</div>
 	</c:forEach>
+		<br><br><br>
+		<button class="btn btn-info btn-block" onclick="confirmar()" id="confirmar">Confirmar</button>
+		<button class="btn btn-success btn-block" disabled="disabled"  id="grabar">Grabar</button>
+<script type="text/javascript">
+	function confirmar(){
+		$("#grabar").attr("disabled",false);
+	}
+</script>
 </body>
 </html>

@@ -47,7 +47,7 @@
 					<td>${personal.tipo.descripcion}</td>
 					<td>
 						<button onclick="modificarPersonal(${personal.idPersonal})" class="btn btn-info">Modificar</button>
-						<button onclick="eliminarPersonal(${personal.idPersonal},this)" class="btn btn-danger">Eliminar</button>
+						<%-- <button onclick="eliminarPersonal(${personal.idPersonal},this)" class="btn btn-danger">Eliminar</button> --%>
 					</td>
 				</tr>
 			</tbody>
@@ -56,11 +56,6 @@
 		<script type="text/javascript">
 			function modificarPersonal(idPersonal){
 				window.location.replace("<c:url value='/modifyPersonal?idPersonal="+idPersonal+"'/>");
-			}
-			function eliminarPersonal(idPersonal,el){
-				if(confirm("¿Esta Seguro que desea eliminar el personal "+ idPersonal+"?")){
-					
-				}
 			}
 		</script>
 	</c:if>

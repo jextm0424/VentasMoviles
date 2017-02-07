@@ -25,7 +25,7 @@
 					<td>${venta.cliente.apellido }, ${venta.cliente.nombre }</td>
 					<td>${venta.precioTotal }</td>
 					<td>${venta.pesoTotal }</td>
-					<td><button onclick="borrarventa(${venta.idVenta},this)">Eliminar</button> <a href="<c:url value="/modificarVenta?idVenta=${venta.idVenta}"/>">Modificar</a></td>
+					<td><button onclick="borrarventa(${venta.idVenta},this)" class="btn btn-danger">Eliminar</button> <a href="<c:url value="/modificarVenta?idVenta=${venta.idVenta}"/>" class="btn btn-info">Modificar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
