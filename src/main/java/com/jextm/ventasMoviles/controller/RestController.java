@@ -124,7 +124,7 @@ public class RestController {
 				detVenta.setImporte(importe);
 				detVentaService.saveDetVenta(detVenta);
 				precioTotal+=importe;
-				pesoTotal+=material.getPeso();
+				pesoTotal+=(material.getPeso()*cantidad);
 			}
 			venta.setPrecioTotal(precioTotal);
 			venta.setPesoTotal(pesoTotal);

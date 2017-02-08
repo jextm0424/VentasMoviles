@@ -47,5 +47,10 @@ public class HomeController {
 		}
 		return model;
 	}
+	@RequestMapping(value = "logoff")
+	public String logoff(HttpServletRequest request){
+		request.getSession().removeAttribute("user");
+		return "redirect:/login";
+	}
 	
 }

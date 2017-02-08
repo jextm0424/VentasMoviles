@@ -6,6 +6,12 @@
 		window.location.replace("login");
 	</script>
 </c:if>
-ggg
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<img alt='Logo Trendy' src="<c:url value="/resources/img/LogoTrendy.jpg"/>" class="img" width="100%">
+	</div>
+	<div class="col-md-3"></div>
+</div>
 </body>
 </html>

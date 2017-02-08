@@ -16,7 +16,7 @@
 				<p>Ventas</p>
 				<p>
 					<a class="btn btn-primary btn-lg" href='<c:url value="/verVentas"/>' role="button">Ver Ventas</a>
-					<a class="btn btn-primary btn-lg" href="<c:url value="/mVentas"/>" role="button">Modificar</a>
+					<%-- <a class="btn btn-primary btn-lg" href="<c:url value="/mVentas"/>" role="button">Modificar</a> --%>
 				</p>
 			</div>
 		</div>

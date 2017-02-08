@@ -16,10 +16,10 @@
 		<div class="col-md-3"></div>
 			<div class="col-md-3">
 				<label for="fechaVenta">Fecha de Venta</label>
-				<input type="hidden" value="${venta.pk.venta.idVenta}"/>
+				<input type="hidden" value="${venta.pk.venta.idVenta}" id="idVenta" name="idVenta"/>
 			</div>
 			<div class="col-md-6">
-				<input type="datetime" id="fechaVenta" value="${venta.pk.venta.fechaVenta }" class="form-control">
+				<input type="text" data-format="dd-MM-yyyy hh:mm:ss"  id="fechaVenta" value="${venta.pk.venta.fechaVenta }" class="form-control" readonly="readonly">
 			</div>
 		</div>
 		<br><br><br>
@@ -39,27 +39,58 @@
 		</div>
 		</c:if>
 		<div class="row">
-			<input type="hidden" name="codMaterial" id="${venta.pk.material.idMaterial}">
+			<input type="hidden" name="codMaterial" value="${venta.pk.material.idMaterial}">
 			<div class="col-md-3">
 				<p style="text-align: center;">${venta.pk.material.material }</p>
 			</div>
 			<div class="col-md-3">
-				<input type="number" class="form-control" value="${venta.pk.material.precio }" step="0.01">
+				<input type="number" class="form-control" value="${venta.pk.material.precio }" step="0.01" name="precio" >
 			</div>
 			<div class="col-md-3">
-				<input type="number" class="form-control" value="${venta.pk.material.peso }" step="0.01">
+				<input type="number" class="form-control" value="${venta.pk.material.peso }" step="0.01" name="peso" >
 			</div>
 			<div class="col-md-3">
-				<input type="number" class="form-control" value="${venta.cantidad }" step="1">
+				<input type="number" class="form-control" value="${venta.cantidad }" step="1" name="cantidad">
 			</div>
 		</div>
 	</c:forEach>
 		<br><br><br>
-		<button class="btn btn-info btn-block" onclick="confirmar()" id="confirmar">Confirmar</button>
-		<button class="btn btn-success btn-block" disabled="disabled"  id="grabar">Grabar</button>
+		<button class="btn btn-info btn-block" onclick="return confirmar()" id="confirmar">Confirmar</button>
+		<button class="btn btn-success btn-block" disabled="disabled"  id="grabar" onclick="grabar()">Grabar</button>
 <script type="text/javascript">
 	function confirmar(){
-		$("#grabar").attr("disabled",false);
+		var isValid = true;
+		$( "input[name='cantidad']" ).each(function() {
+			if(this.value==''){isValid = false;}else{this.readOnly = true;}
+		});
+		$( "input[name='peso']" ).each(function() {
+			if(this.value==''){isValid = false;}else{this.readOnly = true;}
+		});
+		$( "input[name='precio']" ).each(function() {
+			if(this.value==''){isValid = false;}else{this.readOnly = true;}
+		});
+		if(isValid){
+			$("#grabar").attr("disabled",false);
+		}else{
+			alert("Debe Llenar todos los campos");
+		}
+	}
+	function grabar(){
+		var idVenta = $("#idVenta").val();
+		var idMateriales = $("input[name='codMaterial']");
+		var cantidades = $("input[name='cantidad']");
+		var pesos = $("input[name='peso']");
+		var precios = $("input[name='precio']");
+		var detalle ="";
+		for(var i=0; i< cantidades.length; i++){
+			if(cantidades.length == (i+1)){
+				detalle+= idMateriales[i].value + "-"+ cantidades[i].value + "-"+pesos[i].value + "-" + precios[i].value;	
+			}else{
+				detalle+= idMateriales[i].value + "-"+ cantidades[i].value + "-"+pesos[i].value + "-" + precios[i].value+";";
+			}
+			
+		}
+		window.location.replace("<c:url value='/modVenta?detalle="+detalle+"&idVenta="+idVenta+"'/>");
 	}
 </script>
 </body>

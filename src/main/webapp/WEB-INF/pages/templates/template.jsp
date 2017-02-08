@@ -14,6 +14,7 @@
 <link href="<c:url value="/resources/css/default/default.css"/>"  rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 <link href="<c:url value="/resources/css/bootstrap-datepicker.min.css"/>"  rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" type="image/png" href='<c:url value="/resources/img/fanIco.png"/>'/>
 <sitemesh:write property='head'/>
 <title>Sistema de Ventas Online <sitemesh:write property='title'/></title>
 </head>
@@ -38,7 +39,7 @@
                          <li><a href="<c:url value="/cliente"/>"><i class="fa fa-users" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Clientes</span></a></li>
                          <li><a href="<c:url value="/material"/>"><i class="fa fa-lemon-o" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Material</span></a></li>
                           <li><a href="<c:url value="/personal"/>"><i class="fa fa-blind" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Personal</span></a></li>
-                           <li><a href="<c:url value="/consulta"/>"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Consultas</span></a></li>
+                           <%-- <li><a href="<c:url value="/consulta"/>"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Consultas</span></a></li> --%>
                             <li><a href="<c:url value="/ventas"/>"><i class="fa fa-archive" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modificar Ventas</span></a></li>
                     </ul>
                 </div>
@@ -82,7 +83,7 @@
                                               
                                                     <span></span>
                                                     <p class="text-muted small">
-                                                       Rojas Chavez, Mauro
+                                                       ${user.apellido},${user.nombre}
                                                     </p>
                                                     <div class="divider">
                                                     </div>
@@ -147,6 +148,8 @@
     <script type="text/javascript" src='<c:url value="/resources/js/bootstrap.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/dataTables.bootstrap.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/bootstrap-datepicker.min.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/moment.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/bootstrap-datepicker.es.min.js"/>'></script>
     
 	<script>
@@ -170,6 +173,10 @@
 	    language: "es",
 	    autoclose: true
 	});
+/* 	$('#fechaVenta').datetimepicker({
+		format: 'yyyy-mm-dd hh:ii'
+	}); */
+
 	</script>
 	
 </body>

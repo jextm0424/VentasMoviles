@@ -2,6 +2,7 @@ package com.jextm.ventasMoviles.service;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,16 @@ public class DetVentaService {
 	@Transactional(readOnly=true)
 	public List<DetVenta> findByVenta(int idVenta){
 		return detVentaRepository.findByVenta(idVenta);
+	}
+	@Transactional
+	public boolean deleteDetVenta(int idVenta){
+		try{
+			int venta = detVentaRepository.deleteDetallesVentasById(idVenta);
+			return (venta>0) ? true : false;
+		}catch(HibernateException e){
+			System.out.println("Erro al Eliminar Detalle de venta"+ idVenta);
+			return false;
+		}
 	}
 	
 	
