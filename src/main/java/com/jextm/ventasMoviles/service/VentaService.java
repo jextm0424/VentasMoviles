@@ -30,4 +30,9 @@ public class VentaService {
 	public List<Venta> findByFecha(Date fecha){
 		return ventaRepository.findByFecha(fecha);
 	}
+	@Transactional(readOnly=true)
+	public Venta findOne(int idVenta)
+	{
+		return ventaRepository.findOne(idVenta);
+	}
 }
