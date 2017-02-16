@@ -40,7 +40,15 @@
 			<form:select path="giro.idGiro" cssClass="form-control">
 				<form:options items="${giros}"  itemValue="idGiro" itemLabel="giro"/>
 			</form:select>
-		</div>		
+		</div>	
+		<div class="form-group">
+			<label for="personal">Vendedor</label>
+			<form:select path="personal.idPersonal" cssClass="form-control">	
+				<c:forEach items="${personales}" var="personal">
+					<form:option value="${personal.idPersonal}">${personal.apellido}, ${personal.nombre}</form:option>
+				</c:forEach>
+			</form:select>
+		</div>	
 		<div class="form-group">
 			<label for="diaVisita">Dia de Visita</label>
 			<form:select path="diaVisita" cssClass="form-control">
@@ -48,7 +56,7 @@
 				<form:option value="1">Lunes</form:option>
 				<form:option value="2">Martes</form:option>
 				<form:option value="3">Miercoles</form:option>
-				<form:option value="4">Juesves</form:option>
+				<form:option value="4">Jueves</form:option>
 				<form:option value="5">Viernes</form:option>
 				<form:option value="6">Sabado</form:option>
 			</form:select>
@@ -59,7 +67,9 @@
 		</div>
 		<div class="form-group">
 			<label for="ubigeo">Ubigeo</label>
-			<form:input path="ubigeo" cssClass="form-control" value="${cliModel.ubigeo}"/>
+			<form:select path="ubigeo" cssClass="form-control">
+				<form:options items="${ubigeos}" itemLabel="descripcion" itemValue="idUbigeo"/>
+			</form:select>
 		</div>		
 		<div class="form-group">
 			<label for="estado">Estado</label>

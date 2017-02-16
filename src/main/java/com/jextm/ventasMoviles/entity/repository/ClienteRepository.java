@@ -27,7 +27,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 	List<Cliente> findByGiro(Character giro);
 	
 	@Query("select u from Cliente u where u.diaVisita = ?1")
-	List<Cliente> findByDia(int giro);
+	List<Cliente> findByDia(int dia);
 	
 	@Query("select u from Cliente u where u.personal.idPersonal = ?1")
 	List<Cliente> findByPersonal(int idPersonal);

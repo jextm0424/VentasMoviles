@@ -39,7 +39,16 @@
 			<form:select path="giro.idGiro" cssClass="form-control">
 				<form:options items="${giros}"  itemValue="idGiro" itemLabel="giro"/>
 			</form:select>
-		</div>		
+		</div>
+		<div class="form-group">
+			<label for="personal">Vendedor</label>
+			<form:select path="personal.idPersonal" cssClass="form-control">
+				
+				<c:forEach items="${personales}" var="personal">
+					<form:option value="${personal.idPersonal}">${personal.apellido}, ${personal.nombre}</form:option>
+				</c:forEach>
+			</form:select>
+		</div>				
 		<div class="form-group">
 			<label for="diaVisita">Dia de Visita</label>
 			<form:select path="diaVisita" cssClass="form-control">
@@ -58,7 +67,9 @@
 		</div>
 		<div class="form-group">
 			<label for="ubigeo">Ubigeo</label>
-			<form:input path="ubigeo" cssClass="form-control"/>
+			<form:select path="ubigeo" cssClass="form-control">
+				<form:options items="${ubigeos}" itemLabel="descripcion" itemValue="idUbigeo"/>
+			</form:select>
 		</div>	
 		<div class="form-group">
 			<form:button class="btn btn-success">Enviar</form:button>

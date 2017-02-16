@@ -42,4 +42,12 @@ public class PersonalService {
 	public Personal findByUsuario(String usuario){
 		return personalRepository.findByUsuario(usuario);
 	}
+	@Transactional(readOnly=true)
+	public Personal findByTerritorio(int idTerritorio){
+		return personalRepository.findByTerritorio(idTerritorio);
+	}
+	@Transactional(readOnly=true)
+	public List<Personal> findByRol(Character idRol){
+		return personalRepository.findByRol(idRol);
+	}
 }

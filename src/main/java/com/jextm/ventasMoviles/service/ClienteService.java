@@ -56,8 +56,8 @@ public class ClienteService {
 	}
 	
 	@Transactional(readOnly=true)
-	public List<Cliente> findByDia(int giro){
-		return clienteRepository.findByDia(giro);
+	public List<Cliente> findByDia(int dia){
+		return clienteRepository.findByDia(dia);
 	}
 	
 	@Transactional(readOnly=true)

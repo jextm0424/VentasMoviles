@@ -17,4 +17,9 @@ public interface PersonalRepository extends JpaRepository<Personal, Integer>{
 	List<Personal> findByName(String name);
 	@Query("select u from Personal u where u.usuario like ?1")
 	Personal findByUsuario(String usuario);
+	@Query("select u from Personal u where u.territorio.idTerritorio = ?1")
+	Personal findByTerritorio(int idTerritorio);
+	@Query("select u from Personal u where u.rol.idRol = ?1 order by u.apellido")
+	List<Personal> findByRol(Character idRol);
+
 }

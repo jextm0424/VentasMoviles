@@ -18,7 +18,10 @@ import com.jextm.ventasMoviles.entity.Cliente;
 import com.jextm.ventasMoviles.entity.Personal;
 import com.jextm.ventasMoviles.service.ClienteService;
 import com.jextm.ventasMoviles.service.GiroService;
+import com.jextm.ventasMoviles.service.PersonalService;
 import com.jextm.ventasMoviles.service.TipoDocumentoService;
+import com.jextm.ventasMoviles.service.UbigeoService;
+import com.jextm.ventasMoviles.util.Constans;
 
 @Controller
 public class ClienteController {
@@ -28,6 +31,10 @@ public class ClienteController {
 	private TipoDocumentoService tipoDocumentoService;
 	@Autowired
 	private ClienteService clienteSerivice;
+	@Autowired
+	private PersonalService personalService;
+	@Autowired
+	private UbigeoService ubigeoService;
 
 	
 	@RequestMapping(value="/cliente")
@@ -40,6 +47,8 @@ public class ClienteController {
 		model.addObject("cliModel", new Cliente());
 		model.addObject("giros", giroService.getAll());
 		model.addObject("tipoDocs", tipoDocumentoService.getAll());
+		model.addObject("personales",personalService.findByRol('V'));
+		model.addObject("ubigeos",ubigeoService.getAll());
 		return model;
 	}
 	@RequestMapping(value="/cagregar", method = RequestMethod.POST)
@@ -50,6 +59,8 @@ public class ClienteController {
 		if (br.hasErrors()) {
 			model.addObject("giros", giroService.getAll());
 			model.addObject("tipoDoc", tipoDocumentoService.getAll());
+			model.addObject("personales",personalService.findByRol('V'));
+			model.addObject("ubigeos",ubigeoService.getAll());
 			model.addObject("message", "Debe Llenar Todos los Campos");
 			model.setViewName("clienteForm");
 			return model;
@@ -59,6 +70,8 @@ public class ClienteController {
 			if (dni!=null) {
 				model.addObject("giros", giroService.getAll());
 				model.addObject("tipoDoc", tipoDocumentoService.getAll());
+				model.addObject("personales",personalService.findByRol('V'));
+				model.addObject("ubigeos",ubigeoService.getAll());
 				model.addObject("message", "El NRO DE DOCUMENTO YA EXISTE");
 				model.setViewName("clienteForm");
 				return model;
@@ -68,6 +81,8 @@ public class ClienteController {
 				}catch(Exception e){
 					model.addObject("giros", giroService.getAll());
 					model.addObject("tipoDoc", tipoDocumentoService.getAll());
+					model.addObject("personales",personalService.findByRol('V'));
+					model.addObject("ubigeos",ubigeoService.getAll());
 					model.addObject("message", "Error al Grabar Datos");
 					model.setViewName("clienteForm");
 					return model;
@@ -100,7 +115,7 @@ public class ClienteController {
 				lista = null;
 				break; 
 			case 4: //Dia De Visita
-				lista = null;
+				lista = clienteSerivice.findByDia(Constans.getDiaByText(txtTipo));
 				break;
 			default:
 				lista = clienteSerivice.getClientes();
@@ -127,6 +142,8 @@ public class ClienteController {
 		model.addObject("cliModel", cliente);
 		model.addObject("giros", giroService.getAll());
 		model.addObject("tipoDocs", tipoDocumentoService.getAll());
+		model.addObject("ubigeos",ubigeoService.getAll());
+		model.addObject("personales",personalService.findByRol('V'));
 		return model;
 	}
 	@RequestMapping(value="/editarCliente",method = RequestMethod.POST)
@@ -135,6 +152,8 @@ public class ClienteController {
 		if (br.hasErrors()) {
 			model.addObject("giros", giroService.getAll());
 			model.addObject("tipoDoc", tipoDocumentoService.getAll());
+			model.addObject("personales",personalService.findByRol('V'));
+			model.addObject("ubigeos",ubigeoService.getAll());
 			model.addObject("message", "Debe Llenar Todos los Campos Correctamente");
 			model.setViewName("clienteEdit");
 		}
@@ -144,6 +163,8 @@ public class ClienteController {
 			}catch(Exception e){
 				model.addObject("giros", giroService.getAll());
 				model.addObject("tipoDoc", tipoDocumentoService.getAll());
+				model.addObject("personales",personalService.findByRol('V'));
+				model.addObject("ubigeos",ubigeoService.getAll());
 				model.addObject("message", "Error al Grabar Datos");
 				model.setViewName("clienteForm");
 				return model;
