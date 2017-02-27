@@ -80,11 +80,11 @@
 		</div>	
 		<div class="form-group">
 			<label for="x">X</label>
-			<form:input path="x" type="number" cssClass="form-control" value="${cliModel.x}"/>
+			<form:input path="x" type="number"  step="0.0000000001" cssClass="form-control" value="${cliModel.x}"/>
 		</div>
 		<div class="form-group">
 			<label for="y">Y</label>
-			<form:input path="y" type="number" cssClass="form-control" value="${cliModel.y}"/>
+			<form:input path="y" type="number" step="0.0000000001" cssClass="form-control" value="${cliModel.y}"/>
 		</div>	
 		<div class="form-group">
 			<form:button class="btn btn-success">Enviar</form:button>

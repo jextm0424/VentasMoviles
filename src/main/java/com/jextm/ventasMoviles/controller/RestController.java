@@ -60,7 +60,8 @@ public class RestController {
 		Map json = new HashMap();
 		Personal personal = personalService.login(usuario, clave);
 		if(personal!=null){
-			List<Cliente> clientes =clienteService.findByPersonalDia(personal.getIdPersonal(), dia);
+			//List<Cliente> clientes =clienteService.findByPersonalDia(personal.getIdPersonal(), dia);
+			List<Cliente> clientes =clienteService.findByDia(dia);;
 			List<ClientesModel> modelos = new ArrayList<ClientesModel>();
 			for (Cliente cliente : clientes) {
 				ClientesModel model = new ClientesModel();

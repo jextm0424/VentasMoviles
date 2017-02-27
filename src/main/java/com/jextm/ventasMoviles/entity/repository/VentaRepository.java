@@ -16,4 +16,28 @@ public interface VentaRepository extends JpaRepository<Venta, Integer>{
 
 	@Query("select u from Venta u where u.fechaVenta = ?1")
 	List<Venta> findByFecha(Date fecha);
+	
+	@Query("select u from Venta u where u.cliente.personal.idPersonal = ?1")
+	List<Venta> findByVendedor(int codVendedor);
+	
+	@Query("select u from Venta u where u.cliente.idCliente = ?1")
+	List<Venta> findByCliente(int codCliente);
+	
+	@Query("select u from Venta u where u.cliente.modulo like ?1")
+	List<Venta> findByModulo(String modulo);
+	
+	@Query("select u.pk.venta from DetVenta u where u.pk.material.idMaterial = ?1")
+	List<Venta> findByProducto(int idProducto);
+	
+	@Query("select u from Venta u where u.cliente.diaVisita = ?1")
+	List<Venta> findByDia(int dia);
+	
+	@Query("select u from Venta u where u.cliente.giro.idGiro = ?1")
+	List<Venta> findByGiro(Character idGiro);
+	
+	@Query("select u from Venta u where u.cliente.ubigeo like ?1")
+	List<Venta> findByDistrito(int idDistrito);
+	
+
+	
 }

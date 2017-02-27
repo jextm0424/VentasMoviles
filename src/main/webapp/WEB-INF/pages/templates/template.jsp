@@ -39,7 +39,7 @@
                          <li><a href="<c:url value="/cliente"/>"><i class="fa fa-users" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Clientes</span></a></li>
                          <li><a href="<c:url value="/material"/>"><i class="fa fa-lemon-o" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Material</span></a></li>
                           <li><a href="<c:url value="/personal"/>"><i class="fa fa-blind" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Personal</span></a></li>
-                           <%-- <li><a href="<c:url value="/consulta"/>"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Consultas</span></a></li> --%>
+                          <li><a href="<c:url value="/consulta"/>"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Consultas</span></a></li>
                             <li><a href="<c:url value="/ventas"/>"><i class="fa fa-archive" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modificar Ventas</span></a></li>
                     </ul>
                 </div>

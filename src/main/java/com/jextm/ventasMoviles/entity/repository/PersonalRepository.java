@@ -21,5 +21,6 @@ public interface PersonalRepository extends JpaRepository<Personal, Integer>{
 	Personal findByTerritorio(int idTerritorio);
 	@Query("select u from Personal u where u.rol.idRol = ?1 order by u.apellido")
 	List<Personal> findByRol(Character idRol);
-
+	@Query("select u from Personal u")
+	Object ajaxFindAll();
 }
