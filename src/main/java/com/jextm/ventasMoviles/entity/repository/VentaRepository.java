@@ -36,8 +36,9 @@ public interface VentaRepository extends JpaRepository<Venta, Integer>{
 	List<Venta> findByGiro(Character idGiro);
 	
 	@Query("select u from Venta u where u.cliente.ubigeo like ?1")
-	List<Venta> findByDistrito(int idDistrito);
+	List<Venta> findByDistrito(String idDistrito);
 	
-
+	@Query("select u from Venta u where u.fechaVenta between ?1 and ?2")
+	List<Venta> findByDayBetween(Date startDay,Date endDay);
 	
 }

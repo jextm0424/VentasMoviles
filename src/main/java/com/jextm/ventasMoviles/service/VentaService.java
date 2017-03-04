@@ -60,7 +60,22 @@ public class VentaService {
 		return ventaRepository.findByGiro(idGiro);
 	}
 	@Transactional(readOnly=true)
-	public List<Venta> findByDistrito(int idDistrito){
+	public List<Venta> findByDistrito(String idDistrito){
 		return ventaRepository.findByDistrito(idDistrito);
+	}
+	@SuppressWarnings("deprecation")
+	@Transactional(readOnly=true)
+	public List<Venta> findByDayBetween(Date startDay){
+		Date endDay = new Date();
+		startDay.setHours(0);
+		startDay.setMinutes(0);
+		startDay.setSeconds(0);
+		endDay.setDate(startDay.getDate());
+		endDay.setMonth(startDay.getMonth());
+		endDay.setYear(startDay.getYear());
+		endDay.setHours(23);
+		endDay.setMinutes(59);
+		endDay.setSeconds(59);
+		return ventaRepository.findByDayBetween(startDay, endDay);
 	}
 }
